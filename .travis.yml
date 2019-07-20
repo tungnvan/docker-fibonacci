@@ -4,7 +4,7 @@ services:
 before_install:
   - docker build -f ./client/Dockerfile.dev -t tungnvan/docker-fibonacci-test ./client
 script:
-  - docker run -e CI=true tungnvan/docker-react npm run test
+  - docker run -e CI=true tungnvan/docker-fibonacci-test npm run test
 after_success:
   - docker build -t tungnvan/fibonacci-client ./client
   - docker build -t tungnvan/fibonacci-server ./server
