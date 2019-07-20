@@ -1,0 +1,19 @@
+sudo: required
+services:
+  - docker
+before_install:
+  - docker build -f Dockerfile.dev -t tungnvan/docker-fibonacci-test ./client
+script:
+  - docker run -e CI=true tungnvan/docker-react npm run test
+after_success:
+  - docker build -t tungnvan/fibonacci-client ./client
+  - docker build -t tungnvan/fibonacci-server ./server
+  - docker build -t tungnvan/fibonacci-worker ./worker
+  - docker build -t tungnvan/fibonacci-nginx ./nginx
+  # Login to Docker hub
+  - echo "$docker_password" | docker login -u "$docker_username" --password-stdin
+  # Push these images to Docker hub
+  - docker push tungnvan/fibonacci-client
+  - docker push tungnvan/fibonacci-server
+  - docker push tungnvan/fibonacci-worker
+  - docker push tungnvan/fibonacci-nginx
