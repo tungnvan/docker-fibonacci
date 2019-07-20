@@ -2,7 +2,7 @@ sudo: required
 services:
   - docker
 before_install:
-  - docker build -f Dockerfile.dev -t tungnvan/docker-fibonacci-test ./client
+  - docker build -f ./client/Dockerfile.dev -t tungnvan/docker-fibonacci-test ./client
 script:
   - docker run -e CI=true tungnvan/docker-react npm run test
 after_success:
