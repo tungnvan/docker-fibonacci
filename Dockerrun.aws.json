@@ -5,17 +5,20 @@
             "name": "fibonacci-client",
             "image": "tungnvan/fibonacci-client",
             "hostname": "client",
-            "essential": false
+            "essential": false,
+            "memory": 128
         }, {
             "name": "fibonacci-server",
             "image": "tungnvan/fibonacci-server",
             "hostname": "api",
-            "essential": false
+            "essential": false,
+            "memory": 128
         }, {
             "name": "fibonacci-worker",
             "image": "tungnvan/fibonacci-worker",
             "hostname": "worker",
-            "essential": false
+            "essential": false,
+            "memory": 128
         }, {
             "name": "fibonacci-nginx",
             "image": "tungnvan/fibonacci-nginx",
@@ -26,7 +29,8 @@
                     "containerPort": 80
                 }
             ],
-            "links": ["fibonacci-client", "fibonacci-server"]
+            "links": ["fibonacci-client", "fibonacci-server"],
+            "memory": 128
         }
     ]
 
