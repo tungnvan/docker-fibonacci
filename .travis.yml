@@ -17,3 +17,15 @@ after_success:
   - docker push tungnvan/fibonacci-server
   - docker push tungnvan/fibonacci-worker
   - docker push tungnvan/fibonacci-nginx
+deploy:
+  provider: elasticbeanstalk
+  region: ap-southeast-1
+  app: docker-fibonacci
+  env: DockerFibonacci-env
+  bucket_name: elasticbeanstalk-ap-southeast-1-735088437088
+  bucket_path: docker-fibonacci
+  on:
+    branch: master
+  access_key_id: "$aws_access_key_id"
+  secret_access_key:
+    secure: "$aws_secret_access_key"
