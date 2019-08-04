@@ -11,7 +11,7 @@ function App() {
             <header className="App-header">
                 <img src={logo} className="App-logo" alt="logo" />
                 <div className="navigator" style={{marginBottom: '1rem'}}>
-                    <Link to="/">Home</Link>&nbsp;
+                    <Link to="/">Calculator</Link>&nbsp;
                     <Link to="/other">Other</Link>
                 </div>
                 <Switch>
